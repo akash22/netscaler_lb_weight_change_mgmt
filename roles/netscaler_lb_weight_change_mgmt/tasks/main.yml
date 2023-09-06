@@ -1,0 +1,18 @@
+---
+# tasks file for netscaler_lb_weight_change_mgmt
+    - name: Change weight to load balancing vserver bound to services
+      delegate_to: localhost
+      citrix_adc_lb_vserver:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
+        state: present
+        name: "{{ item.0 }}"
+        servicebindings:
+            - servicename: "{{ item.1 }}"
+              weight: "{{ weight_value }}"
+      with_nested:
+            - "{{ lb_vserver }}"
+            - "{{ service_name }}"
+
