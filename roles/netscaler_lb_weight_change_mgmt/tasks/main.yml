@@ -1,5 +1,5 @@
 ---
-   - name: Change weight to load balancing vserver bound to services
+    - name: Change weight to load balancing vserver bound to services
       delegate_to: localhost
       citrix.adc.citrix_adc_lb_vserver:
         nsip: "{{ nsip }}"
