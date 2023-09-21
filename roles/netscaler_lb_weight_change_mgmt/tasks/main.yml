@@ -10,8 +10,8 @@
         name: "{{ item.0 }}"
         lbvserver_service_binding:
             - name: "{{ item.0 }}"
-              servicename: "{{ item.1|first }}"
-              weight: "{{ item.1|last }}"
+              servicename: "{{ item.1|split(',')|first }}"
+              weight: "{{ item.1|split(',')|last }}"
       with_nested:
             - "{{ lb_vserver }}"
-            - "{{ service_name.split(',') }}"
+            - "{{ service_name }}"
