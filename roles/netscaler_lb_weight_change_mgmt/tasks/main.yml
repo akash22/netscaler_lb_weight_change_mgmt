@@ -1,6 +1,5 @@
 ---
-
-    - name: Add VIP to vserver
+    - name: Bind Services to VIP
       delegate_to: localhost
       register: result
       citrix.adc.citrix_adc_nitro_request:
@@ -8,17 +7,11 @@
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         operation: update
-        resource: lbvserver 
+        resource: lbvserver_service_binding
         validate_certs: false
-        idempotent: true
         attributes:
-          name: "{{ item.0 }}"
-          nitro_protocol: https
-          lbvserver_service_binding:
-             binding_members:
-                - name: "{{ item.0 }}"
-                  servicename: "{{ item.1 }}"
-                  weight: "{{ weight_value }}"
-      with_nested:
-         - "{{ lb_vserver }}"
-         - "{{ service_name }}"
+          name: "{{ lb_vserver  }}"  # Replace with your VIP name
+          servicename: "{{ item.service_name }}"
+          weight: "{{ item.weight }}"
+      loop: "{{ service_bindings }}"
+      when: service_bindings | length > 0
