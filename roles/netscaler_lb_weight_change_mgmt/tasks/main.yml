@@ -14,3 +14,16 @@
       with_nested:
             - "{{ lb_vserver }}"
             - "{{ service_name }}"
+
+    - name: Get vserver
+      delegate_to: localhost
+      register: result
+      citrix_adc_nitro_request:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        operation: get
+        resource: vserver
+        validate_certs: false
+        name: "{{ item.0 }}"
+
