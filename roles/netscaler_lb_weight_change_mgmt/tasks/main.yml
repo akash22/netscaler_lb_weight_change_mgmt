@@ -1,0 +1,21 @@
+---
+
+    - name: Add VIP to vserver
+      delegate_to: localhost
+      register: result
+      citrix.adc.citrix_adc_nitro_request:
+        nsip: "{{ inventory_hostname }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        operation: update
+        resource: lbvserver
+        validate_certs: false
+        idempotent: true
+        attributes:
+           name: "{{ item.0 }}"
+           servicebindings:
+              - servicename: "{{ item.1 }}"
+                weight: "{{ weight_value }}"
+      with_nested:
+         - "{{ lb_vserver }}"
+         - "{{ service_name }}"
