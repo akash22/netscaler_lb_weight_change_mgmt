@@ -10,7 +10,11 @@
         resource: lbvserver_service_binding
         validate_certs: false
         attributes:
-          name: "{{ lb_vserver }}"  # Survey input for VIP name
-          servicename: "{{ service_name }}"  # Survey input for service name
-          weight: "{{ weight }}"  # Survey input for weight
+          name: "{{ item.0 }}"  # Survey input for VIP name
+          servicename: "{{ item.1 }}"  # Survey input for service name
+          weight: "{{ item.2 }}"  # Survey input for weight
+      with_nested:
+            - "{{ lb_vserver }}"
+            - "{{ service_name }}"
+            - "{{ weight }}"
       when: lb_vserver is defined and service_name is defined and weight is defined
