@@ -10,12 +10,7 @@
         resource: lbvserver_service_binding
         validate_certs: false
         attributes:
-          name: "{{ lb_vserver  }}"  # Replace with your VIP name
-          servicename: "{{ item.service_name }}"
-          weight: "{{ item.weight }}"
-      loop: "{{ service_bindings }}"
-      when: service_bindings | length > 0
-      vars:
-        service_bindings:
-          - service_name: "{{ service_name }}"
-            weight: "{{ weight }}"
+          name: "{{ lb_vserver }}"  # Survey input for VIP name
+          servicename: "{{ service_name }}"  # Survey input for service name
+          weight: "{{ weight }}"  # Survey input for weight
+      when: lb_vserver is defined and service_name is defined and weight is defined
