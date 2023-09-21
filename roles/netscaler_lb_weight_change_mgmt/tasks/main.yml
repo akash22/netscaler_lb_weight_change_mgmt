@@ -18,7 +18,7 @@
     - name: Get vserver
       delegate_to: localhost
       register: result
-      citrix_adc_nitro_request:
+      citrix.adc.citrix_adc_nitro_request:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
