@@ -1,4 +1,8 @@
 ---
+    - name: Debug Variables
+      debug:
+        var: lb_vserver
+
     - name: Bind Services to VIP
       delegate_to: localhost
       register: result
