@@ -26,4 +26,6 @@
         resource: lbvserver
         validate_certs: false
         name: "{{ item.0 }}"
+      with_nested:
+         - "{{ lb_vserver }}"
 
