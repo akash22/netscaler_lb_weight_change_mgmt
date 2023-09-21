@@ -15,3 +15,7 @@
           weight: "{{ item.weight }}"
       loop: "{{ service_bindings }}"
       when: service_bindings | length > 0
+      vars:
+        service_bindings:
+          - service_name: "{{ service_name }}"
+            weight: "{{ weight }}"
