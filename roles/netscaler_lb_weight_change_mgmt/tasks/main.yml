@@ -2,6 +2,13 @@
     - name: Debug Variables
       debug:
         var: lb_vserver
+    - name: Debug Variables
+      debug:
+        var: service_name
+    - name: Debug Variables
+      debug:
+        var: weight
+
 
     - name: Bind Services to VIP
       delegate_to: localhost
