@@ -12,9 +12,10 @@
         validate_certs: false
         idempotent: true
         attributes:
-           name: "{{ item.0 }}"
-           servicename: "{{ item.1 }}"
-           weight: "{{ weight_value }}"
+          binding_members:
+            - name: "{{ item.0 }}"
+              servicename: "{{ item.1 }}"
+              weight: "{{ weight_value }}"
       with_nested:
          - "{{ lb_vserver }}"
          - "{{ service_name }}"
