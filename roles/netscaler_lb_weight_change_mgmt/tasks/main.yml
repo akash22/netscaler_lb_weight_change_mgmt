@@ -23,7 +23,7 @@
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         operation: get
-        resource: vserver
+        resource: lbvserver
         validate_certs: false
         name: "{{ item.0 }}"
 
