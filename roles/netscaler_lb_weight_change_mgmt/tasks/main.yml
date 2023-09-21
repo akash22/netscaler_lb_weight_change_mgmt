@@ -8,9 +8,10 @@
         validate_certs: no
         state: present
         name: "{{ item.0 }}"
-        servicebindings:
-            - servicename: "{{ item.1 }}"
-              weight: "{{ weight_value }}"
+        lbvserver_service_binding:
+            - name: "{{ item.0 }}"
+              servicename: "{{ item.1|first }}"
+              weight: "{{ item.1|last }}"
       with_nested:
             - "{{ lb_vserver }}"
-            - "{{ service_name }}"
+            - "{{ service_name.split(",") }}"
