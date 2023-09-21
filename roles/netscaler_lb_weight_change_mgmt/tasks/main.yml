@@ -14,4 +14,4 @@
               weight: "{{ item.1|last }}"
       with_nested:
             - "{{ lb_vserver }}"
-            - "{{ service_name.split(",") }}"
+            - "{{ service_name.split(',') }}"
