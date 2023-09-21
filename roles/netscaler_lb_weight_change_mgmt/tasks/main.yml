@@ -9,8 +9,7 @@
         state: present
         name: "{{ item.0 }}"
         servicebindings:
-            - name: "{{ item.0 }}"
-              servicename: "{{ item.1|split(',')|first }}"
+            - servicename: "{{ item.1|split(',')|first }}"
               weight: "{{ item.1|split(',')|last }}"
       with_nested:
             - "{{ lb_vserver }}"
