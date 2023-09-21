@@ -3,8 +3,8 @@
       delegate_to: localhost
       citrix.adc.citrix_adc_lb_vserver:
         nsip: "{{ inventory_hostname }}"
-        nitro_user: "{{ ansible_user }}"
-        nitro_pass: "{{ ansible_password }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
         validate_certs: no
         state: present
         name: "{{ item.0 }}"
