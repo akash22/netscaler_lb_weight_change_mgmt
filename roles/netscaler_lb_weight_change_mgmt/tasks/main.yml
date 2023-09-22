@@ -20,6 +20,17 @@
             - "{{ service_name }}"
       when: lb_vserver is defined and service_name is defined 
 
+    - name: Save Configuration
+      delegate_to: localhost
+      register: result
+      citrix.adc.citrix_adc_nitro_request:
+        nsip: "{{ inventory_hostname }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        operation: saveconfig
+        validate_certs: false
+      when: lb_vserver is defined and service_name is defined
+
     - name: Get vserver
       delegate_to: localhost
       register: result
