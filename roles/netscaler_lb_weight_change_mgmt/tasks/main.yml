@@ -18,7 +18,7 @@
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         operation: update
-        resource: lbvserver_service_binding
+        resource: lbvserver #_service_binding
         validate_certs: false
 #        idempotent: true
         name: "{{ item.0 }}"
