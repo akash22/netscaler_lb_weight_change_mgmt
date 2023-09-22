@@ -28,7 +28,7 @@
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         operation: get_all
-        resource: lbvserver
+        resource: lbvserver_service_binding
         validate_certs: false
         name: "{{ item }}"
       with_items:
