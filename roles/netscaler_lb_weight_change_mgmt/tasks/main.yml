@@ -20,7 +20,7 @@
         operation: update
         resource: lbvserver_service_binding
         validate_certs: false
-        idempotent: true
+#        idempotent: true
         name: "{{ item.0 }}"
         attributes:
            name: "{{ item.0 }}"
