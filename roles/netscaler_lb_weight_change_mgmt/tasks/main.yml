@@ -17,8 +17,8 @@
         nsip: "{{ inventory_hostname }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        operation: update
-        resource: lbvserver_service_binding
+        operation: add
+        resource: lbvserver
         validate_certs: false
         attributes:
             name: "{{ item.0 }}"
