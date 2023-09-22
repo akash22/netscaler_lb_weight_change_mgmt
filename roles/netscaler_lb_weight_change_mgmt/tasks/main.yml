@@ -43,4 +43,4 @@
         validate_certs: false
         name: "{{ item }}"
       with_items:
-         - "{{ service_name|split(',')|first }}"
+         - "{{ service_name.split(',')|first }}"
