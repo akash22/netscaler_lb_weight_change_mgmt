@@ -41,6 +41,6 @@
         operation: get_all
         resource:  service #lbvserver
         validate_certs: false
-        name: "{{ item }}"
+        name: "{{ item|split(',')|first }}"
       with_items:
-         - "{{ service_name.split(',')|first }}"
+         - "{{ service_name }}"
