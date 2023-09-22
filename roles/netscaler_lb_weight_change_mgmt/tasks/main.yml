@@ -21,12 +21,9 @@
         resource: lbvserver_service_binding
         validate_certs: false
         attributes:
-            name: "{{ item.0 }}"
-            lbvserver_service_binding:
-               binding_members:
-                  - name: "{{ item.0 }}"
-                    servicename: "{{ item.1|split(',')|first }}"
-                    weight: "{{ item.1|split(',')|last }}"
+           name: "{{ item.0 }}"
+           servicename: "{{ item.1|split(',')|first }}"
+           weight: "{{ item.1|split(',')|last }}"
 #          name: lb_vserver_1 # "{{ item.0 }}"  # Survey input for VIP name
 #          servicename: service-http-1 #"{{ item.1 }}"  # Survey input for service name
 #          weight: 2 #"{{ item.2 }}"  # Survey input for weight
