@@ -39,8 +39,8 @@
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         operation: get_all
-        resource:  service #lbvserver
+        resource:  lbvserver
         validate_certs: false
-        name: "{{ item|split(',')|first }}"
+        name: "{{ item }}"
       with_items:
-         - "{{ service_name }}"
+         - "{{ lb_vserver }}"
