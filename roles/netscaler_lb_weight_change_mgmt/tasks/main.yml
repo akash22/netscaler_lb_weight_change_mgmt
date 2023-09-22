@@ -20,6 +20,7 @@
         operation: add
         resource: lbvserver_service_binding
         validate_certs: false
+        idempotent: true
         attributes:
            name: "{{ item.0 }}"
            servicename: "{{ item.1|split(',')|first }}"
