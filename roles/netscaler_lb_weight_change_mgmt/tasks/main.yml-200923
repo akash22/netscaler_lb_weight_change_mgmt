@@ -30,6 +30,6 @@
 #          weight: 2 #"{{ item.2 }}"  # Survey input for weight
       with_nested:
             - "{{ lb_vserver }}"
-#            - "{{ service_name }}"
+            - "{{ service_name }}"
 #            - "{{ weight }}"
 #      when: lb_vserver is defined and service_name is defined and weight is defined
