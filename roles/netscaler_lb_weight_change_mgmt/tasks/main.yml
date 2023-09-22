@@ -27,7 +27,7 @@
         nsip: "{{ inventory_hostname }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        operation: saveconfig
+        operation: save_config
         validate_certs: false
       when: lb_vserver is defined and service_name is defined
 
