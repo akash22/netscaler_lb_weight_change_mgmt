@@ -1,15 +1,4 @@
 ---
-    - name: Debug Variables
-      debug:
-        var: lb_vserver
-    - name: Debug Variables
-      debug:
-        var: service_name
-    - name: Debug Variables
-      debug:
-        var: weight
-
-
     - name: Bind Services to VIP
       delegate_to: localhost
       register: result
@@ -26,11 +15,21 @@
            name: "{{ item.0 }}"
            servicename: "{{ item.1|split(',')|first }}"
            weight: "{{ item.1|split(',')|last }}"
-#          name: lb_vserver_1 # "{{ item.0 }}"  # Survey input for VIP name
-#          servicename: service-http-1 #"{{ item.1 }}"  # Survey input for service name
-#          weight: 2 #"{{ item.2 }}"  # Survey input for weight
       with_nested:
             - "{{ lb_vserver }}"
             - "{{ service_name }}"
-#            - "{{ weight }}"
-#      when: lb_vserver is defined and service_name is defined and weight is defined
+      when: lb_vserver is defined and service_name is defined 
+
+    - name: Get vserver
+      delegate_to: localhost
+      register: result
+      citrix.adc.citrix_adc_nitro_request:
+        nsip: "{{ inventory_hostname }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        operation: get_all
+        resource: lbvserver
+        validate_certs: false
+        name: "{{ item }}"
+      with_items:
+         - "{{ lb_vserver }}"
